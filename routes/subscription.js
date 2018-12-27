@@ -157,6 +157,7 @@ router.get('/confirm/unsubscribe/:cid', (req, res, next) => {
                     return next(err);
                 }
 
+
                 mailHelpers.sendUnsubscriptionConfirmed(list, subscription.email, subscription, err => {
                     if (err) {
                         return next(err);
@@ -749,7 +750,6 @@ router.get('/:lcid/unsubscribe/:ucid', passport.csrfProtection, (req, res, next)
                         });
                     });
                 } else { // UnsubscriptionMode.ONE_STEP || UnsubscriptionMode.TWO_STEP || UnsubscriptionMode.MANUAL
-                  subscription.subscribeUrl = '/subscription/' + list.cid + '?cid=' + subscription.cid;
                     handleUnsubscribe(list, subscription, autoUnsubscribe, req.query.c, req.ip, res, next);
                 }
             });
@@ -911,6 +911,7 @@ function webNotice(type, req, res, next) {
             }
 
             let data = {
+                subscribeUrl: "/subscription/" + list.cid,
                 title: list.name,
                 homepage: configItems.defaultHomepage || configItems.serviceUrl,
                 defaultAddress: configItems.defaultAddress,
