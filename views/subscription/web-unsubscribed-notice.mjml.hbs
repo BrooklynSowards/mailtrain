@@ -4,8 +4,12 @@
             {{#translate}}Unsubscribe Successful{{/translate}}
         </mj-text>
         <mj-text mj-class="p">
-            {{#translate}}You have been removed from:{{/translate}} {{title}}.
+            {{#translate}}We have removed your email address from our list{{/translate}}. {{#translate}}If you
+            unsubscribed by mistake, you can re-subscribe by clicking subscribe:{{/translate}}
         </mj-text>
+        <mj-button mj-class="button" href="{{subscribeUrl}}">
+            {{#translate}}Subscribe{{/translate}}
+        </mj-button>
         <mj-button mj-class="button" href="{{homepage}}">
             {{#translate}}Return to our website{{/translate}}
         </mj-button>
