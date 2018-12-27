@@ -705,7 +705,7 @@ router.get('/:lcid/unsubscribe/:ucid', passport.csrfProtection, (req, res, next)
 
                 const autoUnsubscribe = req.query.auto === 'yes';
 
-                subscription.subscribeUrl = '/subscription/' + list.cid + '?cid=' + subscription.cid;
+
 
                 if (autoUnsubscribe) {
                     handleUnsubscribe(list, subscription, autoUnsubscribe, req.query.c, req.ip, res, next);
@@ -749,6 +749,7 @@ router.get('/:lcid/unsubscribe/:ucid', passport.csrfProtection, (req, res, next)
                         });
                     });
                 } else { // UnsubscriptionMode.ONE_STEP || UnsubscriptionMode.TWO_STEP || UnsubscriptionMode.MANUAL
+                  subscription.subscribeUrl = '/subscription/' + list.cid + '?cid=' + subscription.cid;
                     handleUnsubscribe(list, subscription, autoUnsubscribe, req.query.c, req.ip, res, next);
                 }
             });
