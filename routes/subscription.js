@@ -719,6 +719,7 @@ router.get('/:lcid/unsubscribe/:ucid', passport.csrfProtection, (req, res, next)
                     subscription.campaign = req.query.c;
                     subscription.defaultAddress = configItems.defaultAddress;
                     subscription.defaultPostaddress = configItems.defaultPostaddress;
+                    subscription.subscribeUrl = '/subscription/' + list.cid + '?cid=' + subscription.cid;
 
                     subscription.template = {
                         template: 'subscription/web-unsubscribe.mjml.hbs',
